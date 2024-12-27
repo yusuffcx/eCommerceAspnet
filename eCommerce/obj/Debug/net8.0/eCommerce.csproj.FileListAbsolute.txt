@@ -166,3 +166,4 @@ C:\Users\yusuf\source\repos\eCommerce\eCommerce\bin\Debug\net8.0\runtimes\browse
 C:\Users\yusuf\source\repos\eCommerce\eCommerce\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\yusuf\source\repos\eCommerce\eCommerce\obj\Debug\net8.0\eCommerce.csproj.AssemblyReference.cache
 C:\Users\yusuf\source\repos\eCommerce\eCommerce\obj\Debug\net8.0\eCommerce.csproj.Up2Date
+C:\Users\yusuf\source\repos\eCommerce\eCommerce\obj\Debug\net8.0\eCommerce.sourcelink.json
