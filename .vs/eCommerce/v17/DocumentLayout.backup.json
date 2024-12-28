@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\views\\category\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\views\\category\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\views\\category\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\views\\category\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\views\\category\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\views\\category\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|solutionrelative:ecommerce\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{98B83FAE-FEC3-471C-92C1-AE14B2152F8F}|eCommerce\\eCommerce.csproj|c:\\users\\yusuf\\source\\repos\\ecommerce\\ecommerce\\contexts\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,28 +50,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Add.cshtml",
-              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Add.cshtml",
-              "RelativeDocumentMoniker": "eCommerce\\Views\\Category\\Add.cshtml",
-              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Add.cshtml",
-              "RelativeToolTip": "eCommerce\\Views\\Category\\Add.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Delete.cshtml",
+              "RelativeDocumentMoniker": "eCommerce\\Views\\Category\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Delete.cshtml",
+              "RelativeToolTip": "eCommerce\\Views\\Category\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-26T16:44:55.329Z",
+              "WhenOpened": "2024-12-28T13:53:12.646Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "eCommerce\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Models\\Category.cs",
-              "RelativeToolTip": "eCommerce\\Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "eCommerce\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "eCommerce\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T10:43:19.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "eCommerce\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "eCommerce\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAWwEgAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T16:43:40.772Z",
+              "WhenOpened": "2024-12-25T12:48:05.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Edit.cshtml",
+              "RelativeDocumentMoniker": "eCommerce\\Views\\Category\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Edit.cshtml",
+              "RelativeToolTip": "eCommerce\\Views\\Category\\Edit.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-28T11:58:50.751Z",
               "EditorCaption": ""
             },
             {
@@ -74,39 +108,40 @@
               "RelativeDocumentMoniker": "eCommerce\\Views\\Category\\Index.cshtml",
               "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Index.cshtml",
               "RelativeToolTip": "eCommerce\\Views\\Category\\Index.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAB1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-26T14:25:42.734Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "eCommerce\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "eCommerce\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Add.cshtml",
+              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Add.cshtml",
+              "RelativeDocumentMoniker": "eCommerce\\Views\\Category\\Add.cshtml",
+              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Views\\Category\\Add.cshtml",
+              "RelativeToolTip": "eCommerce\\Views\\Category\\Add.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T12:49:04.683Z",
+              "WhenOpened": "2024-12-26T16:44:55.329Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "eCommerce\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "eCommerce\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAowBUAAAAdAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "eCommerce\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Models\\Category.cs",
+              "RelativeToolTip": "eCommerce\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-25T12:48:05.267Z"
+              "WhenOpened": "2024-12-26T16:43:40.772Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\Contexts\\AppDbContext.cs",
               "RelativeDocumentMoniker": "eCommerce\\Contexts\\AppDbContext.cs",
@@ -114,7 +149,8 @@
               "RelativeToolTip": "eCommerce\\Contexts\\AppDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T12:26:17.966Z"
+              "WhenOpened": "2024-12-21T12:26:17.966Z",
+              "EditorCaption": ""
             }
           ]
         }
