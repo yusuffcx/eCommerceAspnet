@@ -41,7 +41,7 @@ namespace eCommerce.Controllers
             {
                 _context.Categories.Add(category);
                 _context.SaveChanges();
-
+                TempData["message"] = "Category has been added";
                 return RedirectToAction("Index","Category");
             }
             return View();
@@ -65,6 +65,7 @@ namespace eCommerce.Controllers
             {
                 _context.Categories.Update(category);
                 _context.SaveChanges();
+                TempData["message"] = "Category has been edited";
                 return RedirectToAction("Index", "Category");
             }
             return View();
@@ -72,9 +73,22 @@ namespace eCommerce.Controllers
 
         public IActionResult Delete(int id)
         {
-            _context.Categories.Where(c => c.Id == id).ExecuteDelete();
-            _context.SaveChanges();
-            return RedirectToAction("Index", "Category");
+            var category = _context.Categories.Find(id);
+            return View(category);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int id)
+        {
+            var category = _context.Categories.Find(id);
+            if(category!= null)
+            {
+                _context.Categories.Remove(category);
+                _context.SaveChanges();
+                TempData["message"] = "Category has been removed";
+                return RedirectToAction("Index", "Category");
+            }
+            return RedirectToAction("Delete");
         }
 
     }
