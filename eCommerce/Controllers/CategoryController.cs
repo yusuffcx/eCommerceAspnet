@@ -1,4 +1,5 @@
 ﻿using DataAccess.Contexts;
+using eCommerce.Repositories;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,15 +17,17 @@ namespace eCommerce.Controllers
             }
         }
 
-        private readonly AppDbContext _context;
-        public CategoryController(AppDbContext context)
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoryController(ICategoryRepository categoryRepository)
         {
-            _context = context;
+            _categoryRepository = categoryRepository;
         }
+
         public List<Category>categories { get; set; }
+
         public IActionResult Index()
         {
-            categories = _context.Categories.ToList();
+            categories = _categoryRepository.GetCategories();
             return View(categories);
         }
 
@@ -36,25 +39,33 @@ namespace eCommerce.Controllers
         [HttpPost]
         public IActionResult Add(Category category)
         {
+            int notificationCounter = 0;
             isValid(category);
             if(ModelState.IsValid)
             {
-                _context.Categories.Add(category);
-                _context.SaveChanges();
-                TempData["message"] = "Category has been added";
+                _categoryRepository.AddCategory(category);
+                _categoryRepository.Save();
+                if(notificationCounter < 1)
+                {
+                    TempData["message"] = "Category has been added";
+                    notificationCounter++;
+                }
                 return RedirectToAction("Index","Category");
             }
             return View();
         }
+
+
         public IActionResult Edit(int ?id)
         {
-            var category = _context.Categories.Find(id);
+            var category = _categoryRepository.FindCategory(id);
             if(id== null ||id== 0 || category == null)
             {
                 return NotFound();
             }
             return View(category);
         }
+
 
         [HttpPost]
         public IActionResult Edit(Category category)
@@ -63,8 +74,8 @@ namespace eCommerce.Controllers
 
             if(ModelState.IsValid)
             {
-                _context.Categories.Update(category);
-                _context.SaveChanges();
+                _categoryRepository.EditCategory(category);
+                _categoryRepository.Save();
                 TempData["message"] = "Category has been edited";
                 return RedirectToAction("Index", "Category");
             }
@@ -73,18 +84,17 @@ namespace eCommerce.Controllers
 
         public IActionResult Delete(int id)
         {
-            var category = _context.Categories.Find(id);
+            var category = _categoryRepository.FindCategory(id);
             return View(category);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int id)
         {
-            var category = _context.Categories.Find(id);
-            if(category!= null)
+            var isDeleted = _categoryRepository.DeleteCategoryPOST(id);
+            if (isDeleted)
             {
-                _context.Categories.Remove(category);
-                _context.SaveChanges();
+                _categoryRepository.Save();
                 TempData["message"] = "Category has been removed";
                 return RedirectToAction("Index", "Category");
             }
