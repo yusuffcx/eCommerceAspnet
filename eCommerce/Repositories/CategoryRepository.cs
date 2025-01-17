@@ -31,6 +31,7 @@ namespace eCommerce.Repositories
             }
         }
 
+
         public void EditCategory(Category category)
         {
             _context.Categories.Update(category);

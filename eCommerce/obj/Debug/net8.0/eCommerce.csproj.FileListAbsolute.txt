@@ -279,3 +279,4 @@ C:\Users\yusuf\source\repos\eCommerce\eCommerce\bin\Debug\net8.0\ru\Microsoft.Co
 C:\Users\yusuf\source\repos\eCommerce\eCommerce\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\yusuf\source\repos\eCommerce\eCommerce\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\yusuf\source\repos\eCommerce\eCommerce\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
+C:\Users\yusuf\source\repos\eCommerce\eCommerce\bin\Debug\net8.0\libman.json

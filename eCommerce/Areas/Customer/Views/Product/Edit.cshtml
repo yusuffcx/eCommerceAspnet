@@ -1,0 +1,56 @@
+﻿@model Product
+
+<h1 class="mb-3">Edit Product</h1>
+
+
+<form asp-controller="Product" asp-action="Edit" method="POST">
+
+    <div class="input-group input-group-sm mb-3">
+        <span asp-for="Title" class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.Title)</span>
+        <input asp-for="Title" type="text" class="form-control" placeholder="Title" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.Description)</span>
+        <input asp-for="Description" type="text" class="form-control" placeholder="Description" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.Author)</span>
+        <input asp-for="Author" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.ISBN)</span>
+        <input asp-for="ISBN" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.ListPrice)</span>
+        <input asp-for="ListPrice" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.ListPrice2)</span>
+        <input asp-for="ListPrice2" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.ListPrice50)</span>
+        <input asp-for="ListPrice50" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.ListPrice100)</span>
+        <input asp-for="ListPrice100" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+
+    <div class="btn-group" role="group">
+        <button type="submit" class="btn btn-sm btn-success m-1">Edit</button>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-sm btn m-1">Back to List</a>
+    </div>
+
+</form>
+
