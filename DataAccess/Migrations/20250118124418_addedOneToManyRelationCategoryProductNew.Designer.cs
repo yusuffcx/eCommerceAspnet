@@ -3,6 +3,7 @@ using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250118124418_addedOneToManyRelationCategoryProductNew")]
+    partial class addedOneToManyRelationCategoryProductNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,7 +115,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             Author = "Sabahattin Ali",
-                            CategoryID = 3,
+                            CategoryID = 0,
                             Description = "Güzel bir roman.",
                             ISBN = "1212454564",
                             ListPrice = 5.0,
@@ -125,7 +128,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 2,
                             Author = "Sabahattin Ali",
-                            CategoryID = 3,
+                            CategoryID = 0,
                             Description = "Polisiye Romanı.",
                             ISBN = "3917854964",
                             ListPrice = 6.0,
@@ -138,7 +141,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 3,
                             Author = "İmam Gazali",
-                            CategoryID = 2,
+                            CategoryID = 0,
                             Description = "Genel kültür kitabı.",
                             ISBN = "6915445564",
                             ListPrice = 4.75,

@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
+
 namespace Entity
 {
     public class Product
@@ -13,7 +16,7 @@ namespace Entity
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Title is required")]
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -32,7 +35,7 @@ namespace Entity
 
         [Required]
         [DisplayName("List Price 1-50")]
-        [Range(1,1000)]
+        [Range(1, 1000)]
         public double ListPrice2 { get; set; }
 
         [Required]
@@ -46,6 +49,10 @@ namespace Entity
         public double ListPrice100 { get; set; }
 
 
+        public int CategoryID { get; set; }
+
+        [DisplayName("Category")]
+        public virtual Category category { get; set; } = null!;
 
 
     }
