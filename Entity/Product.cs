@@ -54,6 +54,9 @@ namespace Entity
         [DisplayName("Category")]
         public virtual Category category { get; set; } = null!;
 
+        public string ImageUrl { get; set; }
+
+
 
     }
 }

@@ -3,6 +3,7 @@ using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250118183322_removedIsRequired")]
+    partial class removedIsRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,10 +88,6 @@ namespace DataAccess.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("ListPrice")
                         .HasColumnType("float");
 
@@ -119,7 +118,6 @@ namespace DataAccess.Migrations
                             CategoryID = 3,
                             Description = "Güzel bir roman.",
                             ISBN = "1212454564",
-                            ImageUrl = "",
                             ListPrice = 5.0,
                             ListPrice100 = 4.0,
                             ListPrice2 = 4.75,
@@ -133,7 +131,6 @@ namespace DataAccess.Migrations
                             CategoryID = 3,
                             Description = "Polisiye Romanı.",
                             ISBN = "3917854964",
-                            ImageUrl = "",
                             ListPrice = 6.0,
                             ListPrice100 = 5.1500000000000004,
                             ListPrice2 = 5.7999999999999998,
@@ -147,7 +144,6 @@ namespace DataAccess.Migrations
                             CategoryID = 2,
                             Description = "Genel kültür kitabı.",
                             ISBN = "6915445564",
-                            ImageUrl = "",
                             ListPrice = 4.75,
                             ListPrice100 = 4.0,
                             ListPrice2 = 4.5,

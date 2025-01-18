@@ -13,7 +13,7 @@ namespace Entity
         [DisplayName("Display Order")]
         [Range(1, 60, ErrorMessage = "Display order must be 1 between 60")]
         public int DisplayOrder { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; } = new List<Product>();
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DataAccess.Contexts;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce.Areas.Customer.Controllers
 {
@@ -16,7 +17,8 @@ namespace eCommerce.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            var products = _db.Products.ToList();
+            var products = _db.Products.Include(p => p.category).OrderBy(p => p.category.DisplayOrder).ToList();
+                //ToList();
             return View(products);
         }
 
