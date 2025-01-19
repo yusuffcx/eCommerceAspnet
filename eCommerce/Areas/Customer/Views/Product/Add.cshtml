@@ -1,5 +1,12 @@
 ﻿@model Product
 
+@{
+
+    List<Product> products = ViewData["Products"] as List<Product>;
+    List<Category> categories = ViewData["Categories"] as List<Category>;
+}
+
+
 <h1 class="mb-3" >Add new Product</h1>
 
 <div  asp-validation-summary="All"></div>
@@ -10,12 +17,21 @@
 <div class="input-group input-group-sm mb-3">
     <span asp-for="Title" class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.Title)</span>
     <input asp-for="Title" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-
 </div>
+ 
+     <select asp-for="CategoryID" class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
+        <option selected disabled>Category</option>
+        @for(int i= 0; i< categories.Count();i++)
+        {
+            <option value="@(categories[i].Id)">@categories[i].Name</option>
+        }
+    </select> 
+
+
 
 <div class="input-group input-group-sm mb-3">
      <span class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.Description)</span>
-    <input asp-for="Description" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <input asp-for="Description" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 
 </div>
 

@@ -15,6 +15,23 @@ namespace eCommerce.Areas.Customer.Controllers
             _db = db;
         }
 
+        public List<Product> GetProducts()
+        {
+            var products = new List<Product>();
+
+            products = _db.Products.ToList();
+            return products;
+        }
+
+        public List<Category> GetCategories()
+        {
+            var categories = new List<Category>();
+
+            categories = _db.Categories.ToList();
+
+            return categories;
+        }
+
         public IActionResult Index()
         {
             var products = _db.Products.Include(p => p.category).OrderBy(p => p.category.DisplayOrder).ToList();
@@ -24,6 +41,8 @@ namespace eCommerce.Areas.Customer.Controllers
 
         public IActionResult Add()
         {
+            ViewData["Products"] = GetProducts();
+            ViewData["Categories"] = GetCategories();
             return View();
         }
 
@@ -38,6 +57,8 @@ namespace eCommerce.Areas.Customer.Controllers
         public IActionResult Edit(int id)
         {
             var product = _db.Products.FirstOrDefault(product => product.Id == id);
+            ViewData["Products"] = GetProducts();
+            ViewData["Categories"] = GetCategories();
             return View(product);
         }
 

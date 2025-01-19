@@ -48,13 +48,14 @@ namespace Entity
         [Range(1, 1000)]
         public double ListPrice100 { get; set; }
 
-
+        [Required]
+        [DisplayName("Category")]
         public int CategoryID { get; set; }
 
         [DisplayName("Category")]
         public virtual Category category { get; set; } = null!;
 
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
 
 

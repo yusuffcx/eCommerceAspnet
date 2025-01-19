@@ -19,11 +19,14 @@ namespace eCommerce.Areas.Admin.Controllers
             }
         }
 
+
         private readonly ICategoryRepository _categoryRepository;
         public CategoryController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
+
+   
 
         public List<Category> categories { get; set; }
 
@@ -41,17 +44,12 @@ namespace eCommerce.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Add(Category category)
         {
-            int notificationCounter = 0;
             isValid(category);
             if (ModelState.IsValid)
             {
                 _categoryRepository.AddCategory(category);
                 _categoryRepository.Save();
-                if (notificationCounter < 1)
-                {
-                    TempData["message"] = "Category has been added";
-                    notificationCounter++;
-                }
+                TempData["message"] = "Category has been added";
                 return RedirectToAction("Index", "Category");
             }
             return View();
