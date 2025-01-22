@@ -19,7 +19,6 @@ namespace eCommerce.Areas.Customer.Controllers
         }
 
 
-
         public List<Product> GetProducts()
         {
             var products = new List<Product>();
@@ -63,7 +62,7 @@ namespace eCommerce.Areas.Customer.Controllers
                 {
                     file.CopyTo(fileStream);
                 }
-                product.ImageUrl = @"\images\product\" + fileName;
+                product.ImageUrl = @"images\product\" + fileName;
             }
             _db.Add(product);
             _db.SaveChanges();
@@ -83,6 +82,15 @@ namespace eCommerce.Areas.Customer.Controllers
         {
             if (file != null)
             {
+                if(NewProduct.ImageUrl != null)
+                {
+                    string oldPath = Path.Combine(_web.WebRootPath, NewProduct.ImageUrl);
+                    if (System.IO.File.Exists(oldPath))
+                    {
+                        System.IO.File.Delete(oldPath);
+                    }
+                }
+
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                 string path = Path.Combine(_web.WebRootPath, @"images\product");
 
@@ -90,7 +98,7 @@ namespace eCommerce.Areas.Customer.Controllers
                 {
                     file.CopyTo(fileStream);
                 }
-                NewProduct.ImageUrl = @"\images\product\" + fileName;
+                NewProduct.ImageUrl = @"images\product\" + fileName;
             }
 
             _db.Products.Update(NewProduct);

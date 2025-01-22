@@ -14,7 +14,7 @@
 
 
 <form asp-controller="Product" asp-action="Edit" method="POST" enctype="multipart/form-data">
-
+    <input asp-for="ImageUrl" hidden/>
     <div class="input-group input-group-sm mb-3">
         <span asp-for="Title" class="input-group-text" id="inputGroup-sizing-sm">@Html.DisplayNameFor(model => model.Title)</span>
         <input asp-for="Title" type="text" class="form-control" placeholder="Title" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -69,10 +69,9 @@
     @if(Model.ImageUrl != null)
     {
         <div class="mb-2" >
-            <img src="@Model.ImageUrl" width="300" height="300" class="img-thumbnail" alt="...">
+            <img src="/@Model.ImageUrl" width="300" height="300" class="img-thumbnail" alt="...">
         </div>
    }
-
 
     <div class="btn-group" role="group">
         <button type="submit" class="btn btn-sm btn-success m-1">Edit</button>
