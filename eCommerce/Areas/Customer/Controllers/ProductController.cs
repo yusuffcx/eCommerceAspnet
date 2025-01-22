@@ -9,11 +9,16 @@ namespace eCommerce.Areas.Customer.Controllers
     public class ProductController : Controller
     {
         private readonly AppDbContext _db;
+        private readonly IWebHostEnvironment _web;
 
-        public ProductController(AppDbContext db)
+        [ActivatorUtilitiesConstructor]
+        public ProductController(AppDbContext db, IWebHostEnvironment web)
         {
             _db = db;
+            _web = web;
         }
+
+
 
         public List<Product> GetProducts()
         {
@@ -47,8 +52,19 @@ namespace eCommerce.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Product product)
+        public IActionResult Add(Product product,IFormFile? file)
         {
+            if(file!= null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string path = Path.Combine(_web.WebRootPath, @"images\product");
+
+                using (var fileStream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                product.ImageUrl = @"\images\product\" + fileName;
+            }
             _db.Add(product);
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -63,8 +79,20 @@ namespace eCommerce.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Product NewProduct)
+        public IActionResult Edit(Product NewProduct, IFormFile? file)
         {
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string path = Path.Combine(_web.WebRootPath, @"images\product");
+
+                using (var fileStream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                NewProduct.ImageUrl = @"\images\product\" + fileName;
+            }
+
             _db.Products.Update(NewProduct);
             _db.SaveChanges();
             return RedirectToAction("Index");
