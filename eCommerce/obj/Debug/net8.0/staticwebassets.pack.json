@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\wwwroot\\images\\product\\949558af-8a5a-4136-b7ec-8e543fd4df21.jpg",
+      "PackagePath": "staticwebassets\\images\\product\\949558af-8a5a-4136-b7ec-8e543fd4df21.jpg"
+    },
+    {
+      "Id": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\wwwroot\\images\\product\\ddd0e916-04bc-474c-b526-f36533a2cd02.jpg",
+      "PackagePath": "staticwebassets\\images\\product\\ddd0e916-04bc-474c-b526-f36533a2cd02.jpg"
+    },
+    {
       "Id": "C:\\Users\\yusuf\\source\\repos\\eCommerce\\eCommerce\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
