@@ -1,3 +1,64 @@
 ﻿@model Product
 
-<h2>@Model.Title</h2>
+
+<a asp-controller="Home" asp-action="Index"  class="btn btn-primary m-2 mb-3 ">Back to home</a>
+<form method="post">
+<div class="container mt-5">
+    <div class="row">
+        <!-- Product Images -->
+        <div class="col-4">
+            <img src="/@Model.ImageUrl"  alt="Product" class="img-fluid rounded mb-3">
+        </div>
+        <div class="col-8">
+            <div class="badge bg-warning rounded-2 text-wrap mb-3" style="width: 6rem;">
+                @Model.category.Name
+            </div>
+            <p class="text-muted mb-1">ISBN: @Model.ISBN</p>
+            <p class="text-muted mb-4">List Price: <span class="fw-bold text-decoration-line-through"> ₺@Model.ListPrice </span> </p>
+            <div class="row text-center border-bottom m-2">
+                <div class="col">
+                    <div>Quantity</div>
+                </div>
+                <div class="col">
+                    <div>1-50</div>
+                </div>
+                <div class="col">
+                    <div>51-100</div>
+                </div>
+                <div class="col">
+                    <div>100+</div>
+                </div>
+            </div>
+
+            <div class="row text-center m-2">
+                <div class="col">
+                    <div class="fw-bold">Price</div>
+                </div>
+                <div class="col">
+                    <div class="fw-bold">₺@Model.ListPrice2</div>
+                </div>
+                <div class="col">
+                    <div class="fw-bold">₺@Model.ListPrice50</div>
+                </div>
+                <div class="col">
+                    <div class="fw-bold">₺@Model.ListPrice100</div>
+                </div>
+            </div>
+
+
+            <div class="m-4">
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-primary text-white border-0 fw-semibold"
+                          id="inputGroup-sizing-default">
+                        Count
+                    </span>
+                    <input type="number" value="1" class="form-control text-end"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-secondary btn p-3 mb-3">add to cart (coming soon...) </button>
+        </div>
+    </div>
+</div>
+
+</form>

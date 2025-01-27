@@ -1,6 +1,7 @@
 using DataAccess.Contexts;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace eCommerce.Areas.Customer.Controllers
@@ -17,18 +18,17 @@ namespace eCommerce.Areas.Customer.Controllers
             _db = db;
             _logger = logger;
         }
-
-
-
         public IActionResult Index()
         {
+            
             var products = _db.Products.ToList();
             return View(products);
         }
 
         public IActionResult Details(int id)
         {
-            var product = _db.Products.Find(id);
+            //var products = _db.Products.Include(c => c.category).ToList();
+            var product = _db.Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
             return View(product);
         }
 
