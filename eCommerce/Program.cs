@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<AppDbContext>().AddRoles<IdentityRole>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
@@ -36,7 +36,6 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 
-
 app.MapAreaControllerRoute(
     name: "AreaAdmin",
     areaName: "Admin",
@@ -51,4 +50,56 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
+
+using(var scope = app.Services.CreateScope())
+{
+     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    var roles = new[] {"Admin","Company","Employee","Customer"};
+
+
+    foreach(var role in roles)
+    {
+        if(!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+
+        }
+    }
+}
+
+/*
+
+            Roles = new List<SelectListItem>
+            {
+                foreach (var role in _roleManager.Roles.ToList())
+            {
+                new SelectListItem { Value = "Seller", Text = "Seller" };
+            }
+        
+
+*/
+
+
+
+string email = "admin3@admin.com";
+string password = "Admin1234,";
+
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    if(await userManager.FindByEmailAsync(email) == null)
+    {
+        var user = new ApplicationUser();
+
+        user.UserName = email;
+        user.Email = email;
+
+        await userManager.CreateAsync(user, password);
+
+        await userManager.AddToRoleAsync(user, "Admin");
+    }
+}
+ 
 app.Run();
