@@ -68,19 +68,6 @@ using(var scope = app.Services.CreateScope())
     }
 }
 
-/*
-
-            Roles = new List<SelectListItem>
-            {
-                foreach (var role in _roleManager.Roles.ToList())
-            {
-                new SelectListItem { Value = "Seller", Text = "Seller" };
-            }
-        
-
-*/
-
-
 
 string email = "admin3@admin.com";
 string password = "Admin1234,";

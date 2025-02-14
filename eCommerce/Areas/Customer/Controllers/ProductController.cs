@@ -1,11 +1,13 @@
 ﻿using DataAccess.Contexts;
 using Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    [Authorize(Roles ="Admin")]
     public class ProductController : Controller
     {
         private readonly AppDbContext _db;
