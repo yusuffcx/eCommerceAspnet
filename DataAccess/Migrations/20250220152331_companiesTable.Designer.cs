@@ -4,6 +4,7 @@ using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250220152331_companiesTable")]
+    partial class companiesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,38 +100,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Istanbul",
-                            Name = "EnUygun",
-                            PhoneNumber = "0212 555 47 86",
-                            PostalCode = "34180",
-                            State = "Türkiye",
-                            StreetAddress = "Bakırköy"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Istanbul",
-                            Name = "KitapEviCom",
-                            PhoneNumber = "0212 145 66 56",
-                            PostalCode = "34164",
-                            State = "Türkiye",
-                            StreetAddress = "Kartal"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Kocaeli",
-                            Name = "OKitap",
-                            PhoneNumber = "0262 254 96 32",
-                            PostalCode = "41214",
-                            State = "Türkiye",
-                            StreetAddress = "Gebze"
-                        });
                 });
 
             modelBuilder.Entity("Entity.Product", b =>
