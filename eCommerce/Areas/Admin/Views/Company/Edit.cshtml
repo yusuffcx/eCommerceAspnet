@@ -6,7 +6,7 @@
 
 <div asp-validation-summary="All"></div>
 
-<form asp-controller="Company" asp-action="Add" method="POST" enctype="multipart/form-data">
+<form asp-controller="Company" asp-action="Edit" method="POST" enctype="multipart/form-data">
     <div asp-validation-summary="All"></div>
 
     <div class="input-group input-group-sm mb-3">
@@ -45,7 +45,7 @@
     </div>
 
     <div class="btn-group" role="group">
-        <button type="submit" class="btn btn-sm btn-success m-1">Add</button>
+        <button type="submit" class="btn btn-sm btn-success m-1">Edit</button>
         <a asp-controller="Company" asp-action="Index" class="btn btn-sm btn m-1">Back to List</a>
     </div>
 </form>

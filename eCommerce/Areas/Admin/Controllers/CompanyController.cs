@@ -1,6 +1,7 @@
 ﻿using DataAccess.Contexts;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce.Areas.Admin.Controllers
 {
@@ -26,6 +27,40 @@ namespace eCommerce.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Add(Company company)
+        {
+            _context.Companies.Add(company);
+            _context.SaveChanges();
+            return RedirectToAction("Index","Company");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var company = _context.Companies.Find(id);
+            return View(company);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Company company)
+        {
+            _context.Companies.Update(company);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Company");
+        }
+
+        
+        public IActionResult Delete(int id)
+        {
+            var com = _context.Companies.Find(id);
+            _context.Companies.Remove(com);
+            _context.SaveChanges();
+            return RedirectToAction("Index","Company");
+        }
+
+
 
     }
 }
