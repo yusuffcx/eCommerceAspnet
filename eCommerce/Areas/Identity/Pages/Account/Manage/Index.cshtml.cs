@@ -64,7 +64,7 @@ namespace eCommerce.Areas.Identity.Pages.Account.Manage
             [Required]
             [DataType(DataType.Text)]
             [Display(Name = "Full name")]
-            public string Name { get; set; }
+            public string? Name { get; set; }
 
             [Required]
             [Display(Name = "Street Address")]
@@ -95,7 +95,10 @@ namespace eCommerce.Areas.Identity.Pages.Account.Manage
             {
                 Name = user.Name,
                 PhoneNumber = phoneNumber,
-                StreetAddress = user.StreetAddress
+                StreetAddress = user.StreetAddress,
+                City = user.City,
+                State = user.State,
+                PostalCode = user.PostalCode
             };
         }
 
