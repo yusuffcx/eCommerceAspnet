@@ -23,7 +23,15 @@ namespace DataAccess.Contexts
 
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Category>()
+           
+            modelBuilder.Entity<Company>()
+                .HasMany(e => e.Users)
+                .WithOne(e => e.Company)
+                .HasForeignKey(e => e.CompanyId)
+                .IsRequired(false);
+        
+
+        modelBuilder.Entity<Category>()
                 .HasMany(e => e.Products)
                 .WithOne(e => e.category)
                 .HasForeignKey(e => e.CategoryID);

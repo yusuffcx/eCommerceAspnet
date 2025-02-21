@@ -27,6 +27,8 @@ namespace Entity
         [Display(Name="Phone Number")]
         public string PhoneNumber { get; set; }
 
+        public ICollection<ApplicationUser> Users { get; } = new List<ApplicationUser>();
+
 
 
     }

@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using DataAccess.Contexts;
 using Entity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -33,7 +34,9 @@ namespace eCommerce.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly AppDbContext _context;
         public List<SelectListItem> Roles { get; }
+        public List<SelectListItem> Companies { get; }
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -41,8 +44,10 @@ namespace eCommerce.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            AppDbContext context)
         {
+            _context = context;
             _userManager = userManager;
             _userStore = userStore;
             _emailStore = (IUserEmailStore<ApplicationUser>)GetEmailStore();
@@ -52,8 +57,15 @@ namespace eCommerce.Areas.Identity.Pages.Account
             _roleManager = roleManager;
 
             var roles = _roleManager.Roles.ToList();
+            var companies = _context.Companies.ToList();
 
             Roles = new List<SelectListItem>();
+            Companies = new List<SelectListItem>();
+
+            for(int i=0;i<companies.Count();i++)
+            {
+                Companies.Add(new SelectListItem { Value = companies[i].Id.ToString(), Text = companies[i].Name.ToString() });
+            }
 
 
             for(int i=0;i<roles.Count();i++)
@@ -141,6 +153,10 @@ namespace eCommerce.Areas.Identity.Pages.Account
             [Required]
             [Display(Name = "Postal Code")]
             public string PostalCode { get; set; }
+
+            [Display(Name = "Company Name")]
+            public int CompanyId { get; set; }
+
         }
         
 
@@ -164,6 +180,7 @@ namespace eCommerce.Areas.Identity.Pages.Account
                 user.City = Input.City;
                 user.State = Input.State;
                 user.PostalCode = Input.PostalCode;
+                user.CompanyId = Input.CompanyId;
                 //user.Name = Input.Name;
 
                 //var role = new IdentityRole("Admin");

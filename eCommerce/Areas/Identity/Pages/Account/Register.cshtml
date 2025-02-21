@@ -65,10 +65,17 @@
 
 
             <div class="form-group">
-                <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" asp-for="Input.Role" asp-items="@(Model.Roles)">
-                    <option value="" disabled >Please select a role</option>
+                <select name="role" id="role" class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" asp-for="Input.Role" asp-items="@(Model.Roles)">
+                    <option class="default" value="">Please select a role</option>
                 </select>
                 <span asp-validation-for="Input.Role" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <select name="company" id="company" class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" asp-for="Input.CompanyId" asp-items="@(Model.Companies)">
+                    <option  value="" disabled>Select a Company</option>
+                </select>
+                <span asp-validation-for="Input.CompanyId" class="text-danger"></span>
             </div>
 
                 <button id="registerSubmit" type="submit" class="mt-2 w-100 text-center btn btn btn-primary">Register</button>
@@ -77,6 +84,22 @@
     </div>
 </div>
 
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(function () {
+            $("#company").hide();  // By default use jQuery to hide the second modal
+
+            // We can use the change(); function to watch the state of the select box and run some conditional logic every time it's changes to hide or show the second select box
+            $("#role").change(function () {
+                if ($(".default").is(: selected)) {
+                    $("#company").hide();
+                } else {
+                    $("#company").show();
+                }
+            });
+        });
+    </script>
 }
