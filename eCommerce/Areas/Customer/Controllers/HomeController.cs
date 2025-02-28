@@ -1,6 +1,7 @@
 using DataAccess.Contexts;
 using Entity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -13,11 +14,13 @@ namespace eCommerce.Areas.Customer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger,AppDbContext db)
+        public HomeController(ILogger<HomeController> logger,AppDbContext db,UserManager<ApplicationUser>userManager)
         {
+            _userManager = userManager;
             _db = db;
-            _logger = logger;
+            _logger = logger; 
         }
         public IActionResult Index()
         {
@@ -26,11 +29,29 @@ namespace eCommerce.Areas.Customer.Controllers
             return View(products);
         }
 
+        
         public IActionResult Details(int id)
         {
-            //var products = _db.Products.Include(c => c.category).ToList();
-            var product = _db.Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
-            return View(product);
+            ShoppingCart cart = new ShoppingCart();
+            cart.ProductId = id;
+            cart.Product = _db.Products.Include(c => c.category).FirstOrDefault(p => p.Id == id);
+            cart.AppUserId = _userManager.GetUserId(HttpContext.User);
+            cart.Count = 1;
+            Console.WriteLine(cart);
+            var product = _db.ShoppingCarts.Include(c => c.Product).FirstOrDefault(p => p.Id == id);
+            
+            return View(cart);
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(ShoppingCart cart)
+        {
+            cart.AppUserId = _userManager.GetUserId(HttpContext.User);
+            _db.ShoppingCarts.Add(cart);
+            _db.SaveChanges();
+            return RedirectToAction("Index","Home");
         }
 
 

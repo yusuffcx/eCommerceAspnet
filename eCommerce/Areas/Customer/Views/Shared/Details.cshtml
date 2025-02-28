@@ -1,13 +1,9 @@
 ﻿@model ShoppingCart
 
 
-
 <a asp-controller="Home" asp-action="Index"  class="btn btn-primary m-2 mb-3 ">Back to home</a>
 <form method="post">
-    <input type="hidden" asp-for="ProductId" />
-    <input type="hidden" asp-for="Id" value="0" />
-
-    <div class="container mt-5">
+<div class="container mt-5">
     <div class="row">
         <!-- Product Images -->
         <div class="col-4">
@@ -56,14 +52,13 @@
                           id="inputGroup-sizing-default">
                         Count
                     </span>
-                    <input asp-for="@Model.Count" type="number" value="1" class="form-control text-end"
+                    <input type="number" value="1" class="form-control text-end"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
                 </div>
             </div>
-            <button type="submit" class="btn btn-outline-secondary btn p-3 mb-3">add to cart</button>
+            <button type="submit" class="btn btn-outline-secondary btn p-3 mb-3">add to cart (coming soon...) </button>
         </div>
     </div>
 </div>
+
 </form>
-
-
