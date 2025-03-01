@@ -30,6 +30,10 @@
                         <li class="nav-item">
                             <a class="nav-link text" asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text" asp-area="Customer" asp-controller="Cart" asp-action="Index">Cart</a>
+                        </li>
+
                         @if(User.IsInRole("Admin"))
                         {
                             <li class="nav-item">

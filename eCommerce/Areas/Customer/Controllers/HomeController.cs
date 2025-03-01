@@ -49,7 +49,17 @@ namespace eCommerce.Areas.Customer.Controllers
         public IActionResult Details(ShoppingCart cart)
         {
             cart.AppUserId = _userManager.GetUserId(HttpContext.User);
-            _db.ShoppingCarts.Add(cart);
+            var userID = cart.AppUserId;
+            var product = _db.ShoppingCarts.FirstOrDefault(c => c.ProductId == cart.ProductId);
+            if (product != null &&  product.AppUserId == userID)
+            {
+                product.Count = product.Count + cart.Count;
+                _db.ShoppingCarts.Update(product);
+            }
+            else
+            {
+                _db.ShoppingCarts.Add(cart);
+            }
             _db.SaveChanges();
             return RedirectToAction("Index","Home");
         }
