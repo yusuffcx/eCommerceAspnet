@@ -9,7 +9,6 @@ using System.Diagnostics;
 namespace eCommerce.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    //[Route("customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -41,8 +40,7 @@ namespace eCommerce.Areas.Customer.Controllers
             var product = _db.ShoppingCarts.Include(c => c.Product).FirstOrDefault(p => p.Id == id);
             
             return View(cart);
-        }
-
+        } 
 
         [HttpPost]
         [Authorize]
@@ -63,6 +61,7 @@ namespace eCommerce.Areas.Customer.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index","Home");
         }
+
 
 
         public IActionResult Privacy()

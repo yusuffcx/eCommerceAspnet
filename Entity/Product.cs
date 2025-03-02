@@ -7,8 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-
-
 namespace Entity
 {
     public class Product

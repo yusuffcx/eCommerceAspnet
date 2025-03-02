@@ -10,7 +10,7 @@ namespace Entity
     public class ShoppingCart
     {
         public int Id { get; set; }
-
+        
         public int ProductId { get; set; }
         public Product Product { get; set; }
 
@@ -18,6 +18,8 @@ namespace Entity
         public int Count { get; set; }
         public string AppUserId { get; set; }
         public ApplicationUser AppUser { get; set; }
+
+        public double Price { get; set; }
 
 
     }
