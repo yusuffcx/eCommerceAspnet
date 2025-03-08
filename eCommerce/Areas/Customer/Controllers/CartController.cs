@@ -25,15 +25,15 @@ namespace eCommerce.Areas.Customer.Controllers
             double price = 0;
             if( count >= 1 && count < 50)
             {
-                price = product.ListPrice2;
+                price = product.ListPrice2 * count;
             }
             else if(count >= 50 && count < 100)
             {
-                price = product.ListPrice50;
+                price = product.ListPrice50 * count;
             }
             else if(count >= 100)
             {
-                price = product.ListPrice100;
+                price = product.ListPrice100 * count;
             }
             return price;
         }
@@ -59,6 +59,24 @@ namespace eCommerce.Areas.Customer.Controllers
 
             return View(Cart);
         }
+
+        [HttpPost]
+        public IActionResult ViewCart(string btn)
+        {
+            if(btn == "increase")
+            {
+
+            }
+
+            if(btn == "plus")
+            {
+               
+            }
+
+            return View();
+        }
+
+
 
     }
 }

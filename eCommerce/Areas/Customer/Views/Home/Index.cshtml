@@ -5,7 +5,8 @@
 @foreach(var product in Model)
 {
         <div class="card m-2 shadow-sm border-top  rounded" style="width: 18rem;">
-        <img src="@product.ImageUrl" class="card-img-top mt-2 img-fluid rounded" alt="bookPicture">
+@*             <h1>@product.ImageUrl</h1>
+ *@        <img src="@product.ImageUrl" class="card-img-top mt-2 img-fluid rounded" alt="bookPicture">
         <div class="card-body">
                 <h5 class="card-title text-center">@product.Title</h5>
                 <p class="card-text text-center"> by <span class="fw-bold">@product.Author</span></p>
