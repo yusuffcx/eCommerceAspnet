@@ -40,7 +40,6 @@ namespace eCommerce.Areas.Customer.Controllers
 
         public IActionResult ViewCart()
         {
-
             var loggedUserID = _userManager.GetUserId(HttpContext.User);
             List<ShoppingCart>products = _db.ShoppingCarts.Where(c => c.AppUserId == loggedUserID).ToList();
 
@@ -58,6 +57,11 @@ namespace eCommerce.Areas.Customer.Controllers
             }
 
             return View(Cart);
+        }
+
+        public IActionResult UpdateCount()
+        {
+            return RedirectToAction("ViewCart");
         }
 
         [HttpPost]
