@@ -49,11 +49,35 @@
                                                                 <i class="fa-solid fa-plus"></i>
                                                         </button>
                                                         <i class="fa-solid fa-plus"></i>
-
                                                     </span>
                                                 </div>
+
+                                            </div>
+
+                                            <div class="col-lg-6 text-center">
+                                               @{
+                                                double price = 0;
+                                                if (@product.Count >= 1 && @product.Count < 50)
+                                                {
+                                                        price = product.Product.ListPrice2;
+                                                }
+
+                                                else if (@product.Count >= 50 && @product.Count < 100)
+                                                {
+                                                        price = product.Product.ListPrice50;
+                                                }
+                                                
+                                                else if (@product.Count >= 100)
+                                                {
+                                                        price = product.Product.ListPrice100;
+                                                }
+
+                                                }
+                                                <h6 style="color: #9e9e9e;">@product.Count x @price = <span> @product.Product.ListPrice50 </span> </h6>
+
                                             </div>
                                     </div>
+
                                 </div>
                             </div>
                             }
@@ -77,8 +101,6 @@
 
 
 
-
-
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
 
@@ -88,21 +110,33 @@
              $('.quantity-right-plus').click(function (e) {
                  product = $(this).data("product-id");
                  console.log(product);
-
-                var productQuantity = $("#quantity-" + product);
-                console.log(productQuantity.val());
-                var productQuantityVal = productQuantity.val();
-                 productQuantityVal = parseInt(productQuantityVal, 10); 
-                productQuantity = productQuantity.val(productQuantityVal + 1);
-                console.log(productQuantity.val());
-                console.log(productQuantity.val());
-                console.log(productQuantity.val());
-
                 
+                 var productQuantity = $('#quantity-' + product);
+                var productQuantityVal = productQuantity.val();
+                    productQuantityVal = parseInt(productQuantityVal, 10) + 1;
+                    productQuantity.val(productQuantityVal);
+             });
+
+             $('.quantity-left-minus').click(function (e) {
+                 product = $(this).data("product-id");
+                 console.log(product);
+                 var productQuantity = $('#quantity-' + product);
+                 var productQuantityVal = productQuantity.val();
+                 if (productQuantityVal > 1) {
+                    productQuantityVal = parseInt(productQuantityVal, 10) - 1;
+                    productQuantity.val(productQuantityVal);
+                 }
+        
+                 console.log(productQuantityVal);
+                 console.log(productQuantity.val());
+
+
              });
              
          });
 
     </script> 
-
 }
+
+
+
