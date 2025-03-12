@@ -7,6 +7,7 @@
             <input asp-for="DisplayOrder" class="form-control">
         </div>
 *@
+@using Newtonsoft.Json;
 
 
 <section class="h-100 h-custom" style="background-color: #eee;">
@@ -55,25 +56,28 @@
                                             </div>
 
                                             <div class="col-lg-6 text-center">
-                                               @{
-                                                double price = 0;
-                                                if (@product.Count >= 1 && @product.Count < 50)
-                                                {
+                                                @{
+                                                    double totalPrice;
+                                                }
+                                                @{
+                                                    double price = 0;
+                                                    if (@product.Count >= 1 && @product.Count < 50)
+                                                    {
                                                         price = product.Product.ListPrice2;
-                                                }
+                                                    }
 
-                                                else if (@product.Count >= 50 && @product.Count < 100)
-                                                {
+                                                    else if (@product.Count >= 50 && @product.Count < 100)
+                                                    {
                                                         price = product.Product.ListPrice50;
-                                                }
-                                                
-                                                else if (@product.Count >= 100)
-                                                {
-                                                        price = product.Product.ListPrice100;
-                                                }
+                                                    }
 
+                                                    else if (@product.Count >= 100)
+                                                    {
+                                                        price = product.Product.ListPrice100;
+                                                    }
+                                                    totalPrice = @product.Count * @price;
                                                 }
-                                                <h6 style="color: #9e9e9e;">@product.Count x @price = <span> @product.Product.ListPrice50 </span> </h6>
+                                                <h6 style="color: #9e9e9e;">@product.Count x @price = <span> @totalPrice </span> </h6>
 
                                             </div>
                                     </div>
@@ -99,6 +103,10 @@
     </div>
 </section>
 
+@{
+    var cartJson = JsonConvert.SerializeObject(Model);
+}
+
 
 
 @section Scripts{
@@ -106,33 +114,48 @@
 
      <script type="text/javascript">
          $(document).ready(function () {
-             var product;
-             $('.quantity-right-plus').click(function (e) {
-                 product = $(this).data("product-id");
-                 console.log(product);
-                
-                 var productQuantity = $('#quantity-' + product);
-                var productQuantityVal = productQuantity.val();
+             var productID;
+             //var modelJS = @Html.Raw(Json.Serialize(Model));
+            //var modelJS = JsonSerializer.Serialize(@Model);
+
+             var model = @Html.Raw(cartJson);
+             $('.quantity-right-plus').click(function (e) 
+             {
+                 productID = $(this).data("product-id");                
+                 var productQuantity = $('#quantity-' + productID);
+                 var productQuantityVal = productQuantity.val();
                     productQuantityVal = parseInt(productQuantityVal, 10) + 1;
                     productQuantity.val(productQuantityVal);
              });
 
              $('.quantity-left-minus').click(function (e) {
-                 product = $(this).data("product-id");
-                 console.log(product);
-                 var productQuantity = $('#quantity-' + product);
+                 productID = $(this).data("product-id");
+                 var productQuantity = $('#quantity-' + productID);
                  var productQuantityVal = productQuantity.val();
                  if (productQuantityVal > 1) {
                     productQuantityVal = parseInt(productQuantityVal, 10) - 1;
                     productQuantity.val(productQuantityVal);
                  }
-        
+       
+                 console.log(productID);
                  console.log(productQuantityVal);
                  console.log(productQuantity.val());
-
-
+                 console.log(model);
+                 console.log(JSON.stringify(model));
+                 $.ajax({
+                     type: "POST",
+                     url: "@Url.Action("UpdateCount")",
+                    data: { cart: model, productId: productID, count: productQuantityVal },
+                     success: function(result){
+                        console.log("00000000000000000000");
+                         console.log(result);
+                     },
+                     error: function (reg,status,error) {
+                         console.log("645454545");
+                        console.log(status);
+                    }
+                 });
              });
-             
          });
 
     </script> 

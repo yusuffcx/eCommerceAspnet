@@ -59,27 +59,14 @@ namespace eCommerce.Areas.Customer.Controllers
             return View(Cart);
         }
 
-        public IActionResult UpdateCount()
-        {
-            return RedirectToAction("ViewCart");
-        }
+
 
         [HttpPost]
-        public IActionResult ViewCart(string btn)
+        public IActionResult UpdateCount(ShoppingCartViewModel cart,int productId,int count)
         {
-            if(btn == "increase")
-            {
 
-            }
-
-            if(btn == "plus")
-            {
-               
-            }
-
-            return View();
+            return RedirectToAction("ViewCart");
         }
-
 
 
     }
