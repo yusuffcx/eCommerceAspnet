@@ -3,6 +3,8 @@ using Entity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+
+
 namespace eCommerce.Areas.Customer.Controllers
 {
     [Area("Customer")]
@@ -65,6 +67,18 @@ namespace eCommerce.Areas.Customer.Controllers
         public IActionResult UpdateCount(ShoppingCartViewModel cart,int productId,int count)
         {
 
+            foreach(var product in cart.Products)
+            {
+                if(product.ProductId == productId)
+                {
+                    product.Count = count;
+                    //var p = _db.ShoppingCarts.SingleOrDefault(p => p.ProductId == productId);
+                    _db.ShoppingCarts.Update(product);
+                    _db.SaveChanges();
+                    break;
+                }
+
+            }
             return RedirectToAction("ViewCart");
         }
 

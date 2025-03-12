@@ -37,7 +37,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-btn btn-lg">
 @*                                                         <button type="button" class="quantity-left-minus btn-lg btn-danger btn-number m-3" data-type="minus" data-field=""> *@
-                                                        <button type="button" class="quantity-left-minus btn-lg btn-danger btn-number m-3" data-product-id="@product.Product.Id" data-type="minus" data-field="">
+                                                        <button type="button" class="quantity-left-minus quantity btn-lg btn-danger btn-number m-3" data-product-id="@product.Product.Id" data-type="minus" data-field="">
                                                             <span class="glyphicon glyphicon-minus"></span>
                                                         </button>
                                                     </span>
@@ -46,7 +46,7 @@
                                                     </div>
 
                                                     <span class="input-group-btn">
-                                                        <button type="button" class="quantity-right-plus btn-success btn-number m-3" data-product-id="@product.Product.Id" data-type="plus">
+                                                        <button type="button" class="quantity-right-plus quantity btn-success btn-number m-3" data-product-id="@product.Product.Id" data-type="plus">
                                                                 <i class="fa-solid fa-plus"></i>
                                                         </button>
                                                         <i class="fa-solid fa-plus"></i>
@@ -115,46 +115,44 @@
      <script type="text/javascript">
          $(document).ready(function () {
              var productID;
+             var productQuantityVal;
              //var modelJS = @Html.Raw(Json.Serialize(Model));
             //var modelJS = JsonSerializer.Serialize(@Model);
 
              var model = @Html.Raw(cartJson);
-             $('.quantity-right-plus').click(function (e) 
+             $('.quantity').click(function (e) 
              {
                  productID = $(this).data("product-id");                
                  var productQuantity = $('#quantity-' + productID);
-                 var productQuantityVal = productQuantity.val();
+                 productQuantityVal = productQuantity.val();
+
+                if ($(this).hasClass('quantity-left-minus'))
+                {
+                    if (productQuantityVal > 1) {
+                        productQuantityVal = parseInt(productQuantityVal, 10) - 1;
+                        productQuantity.val(productQuantityVal);
+                    }
+                }
+                else if ($(this).hasClass('quantity-right-plus'))
+                {
                     productQuantityVal = parseInt(productQuantityVal, 10) + 1;
                     productQuantity.val(productQuantityVal);
-             });
+                }
 
-             $('.quantity-left-minus').click(function (e) {
-                 productID = $(this).data("product-id");
-                 var productQuantity = $('#quantity-' + productID);
-                 var productQuantityVal = productQuantity.val();
-                 if (productQuantityVal > 1) {
-                    productQuantityVal = parseInt(productQuantityVal, 10) - 1;
-                    productQuantity.val(productQuantityVal);
-                 }
-       
-                 console.log(productID);
-                 console.log(productQuantityVal);
-                 console.log(productQuantity.val());
-                 console.log(model);
-                 console.log(JSON.stringify(model));
-                 $.ajax({
-                     type: "POST",
-                     url: "@Url.Action("UpdateCount")",
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("UpdateCount")",
                     data: { cart: model, productId: productID, count: productQuantityVal },
-                     success: function(result){
+                    success: function (result) {
                         console.log("00000000000000000000");
-                         console.log(result);
-                     },
-                     error: function (reg,status,error) {
-                         console.log("645454545");
+                        console.log(result);
+                    },
+                    error: function (reg, status, error) {
+                        console.log("645454545");
                         console.log(status);
                     }
-                 });
+
+                });
              });
          });
 
@@ -163,3 +161,49 @@
 
 
 
+@*
+
+  $(document).ready(function () {
+             var productID;
+             var productQuantityVal;
+             //var modelJS = @Html.Raw(Json.Serialize(Model));
+            //var modelJS = JsonSerializer.Serialize(@Model);
+
+             var model = @Html.Raw(cartJson);
+             $('.quantity-right-plus').click(function (e) 
+             {
+                 productID = $(this).data("product-id");                
+                 var productQuantity = $('#quantity-' + productID);
+                 productQuantityVal = productQuantity.val();
+                    productQuantityVal = parseInt(productQuantityVal, 10) + 1;
+                    productQuantity.val(productQuantityVal);
+             });
+
+             $('.quantity-left-minus').click(function (e) {
+                 productID = $(this).data("product-id");
+                 var productQuantity = $('#quantity-' + productID);
+                 productQuantityVal = productQuantity.val();
+                 if (productQuantityVal > 1) {
+                    productQuantityVal = parseInt(productQuantityVal, 10) - 1;
+                    productQuantity.val(productQuantityVal);
+                 }
+
+             });
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("UpdateCount")",
+                data: { cart: model, productId: productID, count: productQuantityVal },
+                success: function (result) {
+                    console.log("00000000000000000000");
+                    console.log(result);
+                },
+                error: function (reg, status, error) {
+                    console.log("645454545");
+                    console.log(status);
+                }
+
+            });
+         });
+         
+         *@
