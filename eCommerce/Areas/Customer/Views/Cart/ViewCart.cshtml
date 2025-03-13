@@ -55,7 +55,7 @@
 
                                             </div>
 
-                                            <div class="col-lg-6 text-center">
+                                            <div class="d-flex align-items-center justify-content-between col-lg-6 text-center">
                                                 @{
                                                     double totalPrice;
                                                 }
@@ -78,7 +78,7 @@
                                                     totalPrice = @product.Count * @price;
                                                 }
                                                 <h6 style="color: #9e9e9e;">@product.Count x @price = <span> @totalPrice </span> </h6>
-
+                                                <a type="button" asp-controller="Cart" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger btn-sm mx-2">Remove</a>
                                             </div>
                                     </div>
 
