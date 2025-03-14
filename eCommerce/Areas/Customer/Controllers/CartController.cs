@@ -82,6 +82,11 @@ namespace eCommerce.Areas.Customer.Controllers
             return RedirectToAction("ViewCart");
         }
 
+        public IActionResult OrderSummary()
+        {
+            return View();
+        }
+        
         public IActionResult Delete(int id)
         {
             var product = _db.ShoppingCarts.Find(id);
