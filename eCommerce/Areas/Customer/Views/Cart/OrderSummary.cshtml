@@ -1,15 +1,15 @@
 ﻿
 
 <div class="shadow bg-body rounded">
-    <div class="d-flex align-items-center justify-content-between container-sm bg-primary p-3 rounded-top text-white">
-    Shopping Cart
+    <div class="d-flex  align-items-center justify-content-between container-sm bg-primary p-3 rounded-top text-white">
+        <span class="mx-3">Shopping Cart</span> 
         <a type="button" asp-controller="Cart" asp-action="ViewCart" class="btn btn-secondary btn-sm mx-2">Back to cart</a>
     </div>
-    <div class="p-3">
-        <div class="container">
+    <div class="border-bottom pb-1">
+        <div class="container p-3 border-bottom">
             <div class="row justify-content-between">
                 <div class="col-5 p-3">
-                    <div class="p-1 mb-1 text-primary font-weight-bold">Shipping Details:</div>
+                    <div class="p-1  mb-1 text-primary font-weight-bold">Shipping Details:</div>
 
                     <form>
                         <div class="form-group mb-3">
@@ -59,7 +59,11 @@
                 </div>
             </div>
         </div>
+        <div class="d-flex align-items-center justify-content-between p-2 px-3">
+            <p class="m-0 text-danger"> Estimate Arrival Date:  </p>
+            <button type="submit" class="btn rounded  btn-primary">Submit</button>
 
+        </div>
     </div>
 </div>
 
