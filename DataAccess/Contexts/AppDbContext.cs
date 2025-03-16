@@ -18,6 +18,8 @@ namespace DataAccess.Contexts
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<OrderHeader>Orders { get; set; }
+        public DbSet<OrderDetail>OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

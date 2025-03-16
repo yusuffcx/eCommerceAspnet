@@ -2,6 +2,7 @@
 using Entity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 
@@ -44,11 +45,18 @@ namespace eCommerce.Areas.Customer.Controllers
         {
             var loggedUserID = _userManager.GetUserId(HttpContext.User);
             List<ShoppingCart>products = _db.ShoppingCarts.Where(c => c.AppUserId == loggedUserID).ToList();
+            int total = 0;
+            
+            for(int i=0; i<products.Count;i++)
+            {
+                total = total + products[i].Count;
+            }
+            Console.WriteLine(total);
 
             ShoppingCartViewModel Cart = new ShoppingCartViewModel
             {
                 Products = products,
-                TotalCount = products.Count(),
+                TotalCount = total,
                 TotalPrice = 0
             };
 
@@ -82,9 +90,10 @@ namespace eCommerce.Areas.Customer.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        public IActionResult OrderSummary()
+        public IActionResult OrderSummary(ShoppingCartViewModel vm)
         {
-            return View();
+
+            return View(vm);
         }
         
         public IActionResult Delete(int id)

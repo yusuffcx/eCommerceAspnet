@@ -10,6 +10,7 @@
 @using Newtonsoft.Json;
 
 
+
 <section class="h-100 h-custom" style="background-color: #eee;">
     <div class="container h-100 py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -98,7 +99,7 @@
 
                             <div class="d-flex align-items-center justify-content-between">
                                     <h5>@Model.TotalCount items </h5>
-                                <a type="button" asp-controller="Cart" asp-action="OrderSummary" class="text-end btn btn-secondary btn-sm mx-2">Order Summary</a>
+                                <a type="button" asp-controller="Cart" asp-action="OrderSummary" asp-r class="text-end btn btn-secondary btn-sm mx-2">Order Summary</a>
                                 </div>
 
                             </div>
@@ -113,7 +114,7 @@
 @{
     var cartJson = JsonConvert.SerializeObject(Model);
 }
-
+@Model.
 
 
 @section Scripts{
