@@ -13,8 +13,9 @@ namespace Entity
         public int? TotalCount { get; set; }
         public OrderDetail OrderDetail { get; set; }
 
-        public string loggedUserId { get; set; }
-        
-
+        public string LoggedUserId { get; set; }
     }
+
 }
+
+

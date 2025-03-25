@@ -57,7 +57,8 @@ namespace eCommerce.Areas.Customer.Controllers
             {
                 Products = products,
                 TotalCount = total,
-                TotalPrice = 0
+                TotalPrice = 0,
+                LoggedUserId = loggedUserID
             };
 
             for (int i = 0; i < products.Count; i++)
@@ -69,8 +70,6 @@ namespace eCommerce.Areas.Customer.Controllers
             return View(Cart);
         }
 
-
-
         [HttpPost]
         public IActionResult UpdateCount(ShoppingCartViewModel cart,int productId,int count)
         {
@@ -80,22 +79,38 @@ namespace eCommerce.Areas.Customer.Controllers
                 if(product.ProductId == productId)
                 {
                     product.Count = count;
-                    //var p = _db.ShoppingCarts.SingleOrDefault(p => p.ProductId == productId);
                     _db.ShoppingCarts.Update(product);
                     _db.SaveChanges();
                     break;
                 }
-
             }
             return RedirectToAction("ViewCart");
         }
 
-        public IActionResult OrderSummary(ShoppingCartViewModel vm)
-        {
+        //[HttpPost]
+        //public IActionResult OrderSummary(string applicationUserId)
+        //{
+        //    //var products = _db.ShoppingCarts.Where(cart => cart.AppUserId == applicationUserId).ToList();
+        //    //ShoppingCartViewModel vm = new ShoppingCartViewModel
+        //    //{
+        //    //    LoggedUserId = applicationUserId,
+        //    //    Products = products,
+        //    //    TotalPrice
+        //    //};
 
-            return View(vm);
+        //   return View(products);
+        //}
+
+
+
+        [HttpPost]
+        public IActionResult OrderSummary(ShoppingCartViewModel shoppingCartJson)
+        {
+            //  vm.Products = ShoppingCartViewModel vm,
+
+            return View();
         }
-        
+
         public IActionResult Delete(int id)
         {
             var product = _db.ShoppingCarts.Find(id);

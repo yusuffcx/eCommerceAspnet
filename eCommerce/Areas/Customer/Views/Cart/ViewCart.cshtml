@@ -9,8 +9,6 @@
 *@
 @using Newtonsoft.Json;
 
-
-
 <section class="h-100 h-custom" style="background-color: #eee;">
     <div class="container h-100 py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -60,7 +58,9 @@
                                                 @{
                                                     double totalPrice;
                                                 }
+
                                                 @{
+                                                    //price burdan gelmemeli daha sonra düzenleyip bunu viewModel içine at böyle olmaz
                                                     double price = 0;
                                                     if (@product.Count >= 1 && @product.Count < 50)
                                                     {
@@ -99,9 +99,42 @@
 
                             <div class="d-flex align-items-center justify-content-between">
                                     <h5>@Model.TotalCount items </h5>
-                                <a type="button" asp-controller="Cart" asp-action="OrderSummary" asp-r class="text-end btn btn-secondary btn-sm mx-2">Order Summary</a>
-                                </div>
+                                    <h6>@Model.LoggedUserId </h6>
 
+
+                                @{
+                                    var orderSumJson = Json.Serialize(Model);
+                                }
+
+                                @using (Html.BeginForm("OrderSummary", "Cart",FormMethod.Post))
+                                {
+@*                                     <input type="hidden" name="ProductsJson" value="@Html.Raw(Json.Serialize(Model.Products))" />
+ *@
+                                    //<h6> @Model.Products </h6>
+                                       // var serializedProducts = JsonSerializer.Serialize(Model.Products);
+@*                                     @for(int i = 0;i<Model.Products.Count;i++)
+                                    {
+
+                                        @Html.HiddenFor(m => m.Products[i].AppUserId)
+                                        @Html.HiddenFor(m => m.Products[i].AppUser)
+                                        @Html.HiddenFor(m => m.Products[i].Count)
+                                        @Html.HiddenFor(m => m.Products[i].Price)
+                                        @Html.HiddenFor(m => m.Products[i].Id)
+                                        @Html.HiddenFor(m => m.Products[i].ProductId)
+                                        @Html.HiddenFor(m => m.Products[i].Product)
+                                      
+                                    }
+                                    
+
+                                    @Html.HiddenFor(m => m.TotalCount)
+                                    @Html.HiddenFor(m => m.TotalPrice)
+                                    @Html.HiddenFor(m => m.OrderDetail)
+                                    @Html.HiddenFor(m => m.LoggedUserId)
+                                    <input type="submit" value="Order Summary" class="text-end btn btn-secondary btn-sm mx-2"/> *@
+                                }
+                                <input  value="Order Summary" class="orderSum text-end btn btn-secondary btn-sm mx-2" />
+
+                            </div>
                             </div>
 
                     </div>
@@ -114,7 +147,6 @@
 @{
     var cartJson = JsonConvert.SerializeObject(Model);
 }
-@Model.
 
 
 @section Scripts{
@@ -128,6 +160,7 @@
             //var modelJS = JsonSerializer.Serialize(@Model);
 
              var model = @Html.Raw(cartJson);
+             var orderSum = @Html.Raw(orderSumJson); 
              $('.quantity').click(function (e) 
              {
                  productID = $(this).data("product-id");                
@@ -160,9 +193,31 @@
                         console.log("645454545");
                         console.log(status);
                     }
-
                 });
              });
+
+
+
+             $('.orderSum').click(function (e) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("OrderSummary")",
+                    data: { shoppingCartJson: orderSum },
+                    success: function (result) {
+                        console.log("succeeded");
+                        console.log(result);
+                        location.reload();
+                    },
+                    error: function (reg, status, error) {
+                        console.log("error");
+                        console.log(status);
+                        console.log(error);
+                    }
+                });
+             });
+
+
          });
 
     </script> 
