@@ -70,7 +70,7 @@ namespace eCommerce.Areas.Customer.Controllers
             return View(Cart);
         }
 
-        [HttpPost]
+        //[HttpPost]
         public IActionResult UpdateCount(ShoppingCartViewModel cart,int productId,int count)
         {
 
@@ -102,13 +102,12 @@ namespace eCommerce.Areas.Customer.Controllers
         //}
 
 
-
-        [HttpPost]
         public IActionResult OrderSummary(ShoppingCartViewModel shoppingCartJson)
         {
+            ShoppingCartViewModel vm = shoppingCartJson;
             //  vm.Products = ShoppingCartViewModel vm,
 
-            return View();
+            return View(vm);
         }
 
         public IActionResult Delete(int id)

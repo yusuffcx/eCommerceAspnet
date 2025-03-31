@@ -1,12 +1,6 @@
 ﻿@model ShoppingCartViewModel
 
 
-@*
-            <div class="p-1 row mb-2">
-            <label asp-for="DisplayOrder" class="p-1"></label>
-            <input asp-for="DisplayOrder" class="form-control">
-        </div>
-*@
 @using Newtonsoft.Json;
 
 <section class="h-100 h-custom" style="background-color: #eee;">
@@ -132,7 +126,7 @@
                                     @Html.HiddenFor(m => m.LoggedUserId)
                                     <input type="submit" value="Order Summary" class="text-end btn btn-secondary btn-sm mx-2"/> *@
                                 }
-                                <input  value="Order Summary" class="orderSum text-end btn btn-secondary btn-sm mx-2" />
+                                <input value="Order Summary"  class="orderSum text-end btn btn-secondary btn-sm mx-2" />
 
                             </div>
                             </div>
@@ -195,7 +189,7 @@
                     }
                 });
              });
-
+              
 
 
              $('.orderSum').click(function (e) {
@@ -205,11 +199,14 @@
                     url: "@Url.Action("OrderSummary")",
                     data: { shoppingCartJson: orderSum },
                     success: function (result) {
+                        window.location.href = '@Url.Action("OrderSummary", "Cart")'
                         console.log("succeeded");
-                        console.log(result);
-                        location.reload();
                     },
                     error: function (reg, status, error) {
+                        alert(reg);
+                        alert(status);
+                        alert(error);
+
                         console.log("error");
                         console.log(status);
                         console.log(error);
