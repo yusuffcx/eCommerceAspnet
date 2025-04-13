@@ -10,35 +10,35 @@
             <div class="row justify-content-between">
                 <div class="col-5 p-3">
                     <div class="p-1  mb-1 text-primary font-weight-bold">Shipping Details:</div>
-@* 
+
                     <form>
                         <div class="form-group mb-3">
                             <label id="name">Name</label>
-                            <input type="text" value="@Model.OrderDetail.OrderHeader.Name" class="form-control form-control-sm" id="name" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="text" asp-for="OrderHeader.Name" class="form-control form-control-sm" id="name" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
                         <div class="form-group mb-3">
                             <label for="phone">Phone</label>
-                            <input type="password" value="@Model.OrderDetail.OrderHeader.PhoneNumber" class="form-control form-control-sm" id="phone">
+                            <input type="password" asp-for="OrderHeader.PhoneNumber" class="form-control form-control-sm" id="phone">
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="streetAddress">Street Address</label>
-                            <input type="password" value="@Model.OrderDetail.OrderHeader.StreetAddress" class="form-control form-control-sm" id="streetAddress">
+                            <input type="password" asp-for=OrderHeader.StreetAddress class="form-control form-control-sm" id="streetAddress">
                         </div>
                         <div class="form-group mb-3">
                             <label for="city">City</label>
-                            <input type="password" value="@Model.OrderDetail.OrderHeader.City" class="form-control form-control-sm" id="city">
+                            <input type="password" asp-for=OrderHeader.City class="form-control form-control-sm" id="city">
                         </div>
                         <div class="form-group mb-3">
                             <label for="state">State</label>
-                            <input type="password" value="@Model.OrderDetail.OrderHeader.State" class="form-control form-control-sm" id="state">
+                            <input type="password" asp-for=OrderHeader.State class="form-control form-control-sm" id="state">
                         </div>
                         <div class="form-group mb-3">
                             <label for="postalCode">Postal Code</label>
-                            <input type="password" value="@Model.OrderDetail.OrderHeader.PostalCode" class="form-control form-control-sm" id="postalCode">
+                            <input type="password" asp-for=OrderHeader.PostalCode class="form-control form-control-sm" id="postalCode">
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                    </form> *@
+                    </form> 
                 </div>
 
                 <div class="col-6 p-3">

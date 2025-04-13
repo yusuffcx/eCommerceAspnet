@@ -70,7 +70,6 @@ namespace eCommerce.Areas.Customer.Controllers
             return View(Cart);
         }
 
-        //[HttpPost]
         public IActionResult UpdateCount(ShoppingCartViewModel cart,int productId,int count)
         {
 
@@ -87,24 +86,17 @@ namespace eCommerce.Areas.Customer.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        //[HttpPost]
-        //public IActionResult OrderSummary(string applicationUserId)
-        //{
-        //    //var products = _db.ShoppingCarts.Where(cart => cart.AppUserId == applicationUserId).ToList();
-        //    //ShoppingCartViewModel vm = new ShoppingCartViewModel
-        //    //{
-        //    //    LoggedUserId = applicationUserId,
-        //    //    Products = products,
-        //    //    TotalPrice
-        //    //};
-
-        //   return View(products);
-        //}
-
-
         public IActionResult OrderSummary(ShoppingCartViewModel shoppingCartJson)
         {
-            ShoppingCartViewModel vm = shoppingCartJson;
+            ShoppingCartViewModel vm = new ShoppingCartViewModel
+            {
+                Products= shoppingCartJson.Products,
+                OrderHeader = shoppingCartJson.OrderHeader,
+                LoggedUserId = shoppingCartJson.LoggedUserId,
+                TotalCount = shoppingCartJson.TotalCount,
+                TotalPrice = shoppingCartJson.TotalPrice,
+            };
+
             //  vm.Products = ShoppingCartViewModel vm,
 
             return View(vm);

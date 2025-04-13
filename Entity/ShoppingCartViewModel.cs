@@ -11,11 +11,13 @@ namespace Entity
         public List<ShoppingCart> Products { get; set; }
         public double TotalPrice { get; set; }
         public int? TotalCount { get; set; }
-        public OrderDetail OrderDetail { get; set; }
+        public OrderHeader OrderHeader { get; set; }
 
         public string LoggedUserId { get; set; }
     }
 
 }
+
+
 
 
