@@ -197,7 +197,7 @@
                     url: "@Url.Action("ViewCartToOrderSum", "Cart")",
                     data: { shoppingCartJson: orderSum },
                     success: function (result) {
-                        //window.location.href = '@Url.Action("OrderSummary", "Cart")'
+                        window.location.href = '@Url.Action("OrderSummary", "Cart")'
                         console.log("succeeded");
                     },
                     error: function (reg, status, error) {

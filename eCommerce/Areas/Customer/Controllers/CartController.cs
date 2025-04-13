@@ -94,7 +94,7 @@ namespace eCommerce.Areas.Customer.Controllers
 
             TempData["cart"] = json;
 
-            return RedirectToAction("OrderSummary");
+            return Json( new {success = true});
         }
 
         public IActionResult OrderSummary()
