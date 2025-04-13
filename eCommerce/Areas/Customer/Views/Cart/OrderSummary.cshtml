@@ -11,7 +11,7 @@
                 <div class="col-5 p-3">
                     <div class="p-1  mb-1 text-primary font-weight-bold">Shipping Details:</div>
 
-                    <form>
+                    <form asp-controller="Cart" asp-action="OrderSummary" method="POST" >
                         <div class="form-group mb-3">
                             <label id="name">Name</label>
                             <input type="text" asp-for="OrderHeader.Name" class="form-control form-control-sm" id="name" aria-describedby="emailHelp" placeholder="Enter email">
@@ -40,14 +40,13 @@
                         <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                     </form> 
                 </div>
-
                 <div class="col-6 p-3">
                     <div class="text-primary mb-2 font-weight-bold">Order Summary:</div>
                     <div class=""></div>
                     <div class="p-3 px-3 rounded border border-secondary">
                         <div class="d-flex align-items-end justify-content-between">
-                            <p class="m-0 text-secondary-emphasis">Title</p>
-                            <p class="m-0" >Price * Count</p>
+                            <p class="m-0 text-secondary-emphasis"> (@Model.TotalCount) Product, Total: @Model.TotalPrice</p>
+                            <p class="m-0" >  </p>
                         </div>
                         <p>Quantity: </p>
                         <div class="border-top d-flex align-items-end justify-content-between">

@@ -3,6 +3,7 @@ using Entity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.Json;
 
 
 
@@ -86,20 +87,35 @@ namespace eCommerce.Areas.Customer.Controllers
             return RedirectToAction("ViewCart");
         }
 
-        public IActionResult OrderSummary(ShoppingCartViewModel shoppingCartJson)
+        [HttpPost]
+        public IActionResult ViewCartToOrderSum(ShoppingCartViewModel shoppingCartJson)
         {
+            string json = JsonSerializer.Serialize(shoppingCartJson);
+
+            TempData["cart"] = json;
+
+            return RedirectToAction("OrderSummary");
+        }
+
+        public IActionResult OrderSummary()
+        {
+            if (TempData["cart"] is string json)
+            {
+                var shoppingCartJson = JsonSerializer.Deserialize<ShoppingCartViewModel>(json);
+
+                return View(shoppingCartJson);
+            }
+
+            /*
             ShoppingCartViewModel vm = new ShoppingCartViewModel
             {
                 Products= shoppingCartJson.Products,
                 OrderHeader = shoppingCartJson.OrderHeader,
                 LoggedUserId = shoppingCartJson.LoggedUserId,
                 TotalCount = shoppingCartJson.TotalCount,
-                TotalPrice = shoppingCartJson.TotalPrice,
-            };
-
-            //  vm.Products = ShoppingCartViewModel vm,
-
-            return View(vm);
+                TotalPrice = shoppingCartJson.TotalPrice
+            };*/
+            return View(new ShoppingCartViewModel());
         }
 
         public IActionResult Delete(int id)
