@@ -14,9 +14,11 @@ namespace eCommerce.Areas.Customer.Controllers
     {
         private readonly AppDbContext _db;
 
-        [BindProperty]
         private  List<ShoppingCart> _products { get; set; }
         private readonly UserManager<ApplicationUser> _userManager;
+
+        [BindProperty]
+        public ShoppingCartViewModel VM { get; set; }
 
 
         public CartController(AppDbContext db, UserManager<ApplicationUser> userManager)
@@ -117,15 +119,18 @@ namespace eCommerce.Areas.Customer.Controllers
                 shoppingCartJson.OrderHeader.State = loggedUserInfo.State;
                 shoppingCartJson.OrderHeader.ApplicationUserId = loggedUserInfo.Id;
 
+                _products = shoppingCartJson.Products;
+
                 return View(shoppingCartJson);
             }
             return View(new ShoppingCartViewModel());
         }
 
         [HttpPost]
-        public IActionResult OrderSummaryPOST(ShoppingCartViewModel shoppingCartJson)
+        public IActionResult OrderSummaryPOST()
         {
-            return View();
+
+            return RedirectToAction("OrderSummary",VM);
         }
 
         public IActionResult Delete(int id)
