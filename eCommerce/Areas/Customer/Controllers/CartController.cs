@@ -57,6 +57,7 @@ namespace eCommerce.Areas.Customer.Controllers
                 total = total + products[i].Count;
             }
             Console.WriteLine(total);
+            Console.WriteLine(total);
 
             ShoppingCartViewModel Cart = new ShoppingCartViewModel
             {
