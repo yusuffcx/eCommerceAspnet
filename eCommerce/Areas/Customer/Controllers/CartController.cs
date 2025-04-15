@@ -13,7 +13,9 @@ namespace eCommerce.Areas.Customer.Controllers
     public class CartController : Controller
     {
         private readonly AppDbContext _db;
-        private readonly List<ShoppingCart> _products;
+
+        [BindProperty]
+        private  List<ShoppingCart> _products { get; set; }
         private readonly UserManager<ApplicationUser> _userManager;
 
 
@@ -113,21 +115,17 @@ namespace eCommerce.Areas.Customer.Controllers
                 shoppingCartJson.OrderHeader.PostalCode = loggedUserInfo.PostalCode;
                 shoppingCartJson.OrderHeader.City = loggedUserInfo.City;
                 shoppingCartJson.OrderHeader.State = loggedUserInfo.State;
-                
+                shoppingCartJson.OrderHeader.ApplicationUserId = loggedUserInfo.Id;
 
                 return View(shoppingCartJson);
             }
-
-            /*
-            ShoppingCartViewModel vm = new ShoppingCartViewModel
-            {
-                Products= shoppingCartJson.Products,
-                OrderHeader = shoppingCartJson.OrderHeader,
-                LoggedUserId = shoppingCartJson.LoggedUserId,
-                TotalCount = shoppingCartJson.TotalCount,
-                TotalPrice = shoppingCartJson.TotalPrice
-            };*/
             return View(new ShoppingCartViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult OrderSummaryPOST(ShoppingCartViewModel shoppingCartJson)
+        {
+            return View();
         }
 
         public IActionResult Delete(int id)

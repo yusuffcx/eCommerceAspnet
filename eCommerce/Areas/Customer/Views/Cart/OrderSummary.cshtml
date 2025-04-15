@@ -1,68 +1,114 @@
-﻿@model ShoppingCartViewModel
+﻿@using Newtonsoft.Json
+@model ShoppingCartViewModel
 
 <div class="shadow bg-body rounded">
     <div class="d-flex  align-items-center justify-content-between container-sm bg-primary p-3 rounded-top text-white">
         <span class="mx-3">Shopping Cart</span> 
         <a type="button" asp-controller="Cart" asp-action="ViewCart" class="btn btn-secondary btn-sm mx-2">Back to cart</a>
     </div>
+    <form asp-controller="Cart" asp-action="OrderSummaryPOST" method="POST">
+
     <div class="border-bottom pb-1">
         <div class="container p-3 border-bottom">
             <div class="row justify-content-between">
                 <div class="col-5 p-3">
                     <div class="p-1  mb-1 text-primary font-weight-bold">Shipping Details:</div>
 
-                    <form asp-controller="Cart" asp-action="OrderSummary" method="POST" >
                         <div class="form-group mb-3">
                             <label id="name">Name</label>
-                            <input type="text" asp-for="OrderHeader.Name" class="form-control form-control-sm" id="name" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="text" asp-for="OrderHeader.Name" class="form-control form-control-sm" id="name" aria-describedby="emailHelp" >
+                            <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+
                         </div>
                         <div class="form-group mb-3">
                             <label for="phone">Phone</label>
                             <input type="text" asp-for="OrderHeader.PhoneNumber" class="form-control form-control-sm" id="phone">
+                            <span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
                         </div>
 
                         <div class="form-group mb-3">
                             <label for="streetAddress">Street Address</label>
                             <input type="text" asp-for="OrderHeader.StreetAddress" class="form-control form-control-sm" id="streetAddress">
+                            <span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
                             <label for="city">City</label>
                             <input type="text" asp-for="OrderHeader.City" class="form-control form-control-sm" id="city">
+                            <span asp-validation-for="OrderHeader.City" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
                             <label for="state">State</label>
                             <input type="text" asp-for="OrderHeader.State" class="form-control form-control-sm" id="state">
+                            <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
                             <label for="postalCode">Postal Code</label>
                             <input type="text" asp-for="OrderHeader.PostalCode" class="form-control form-control-sm" id="postalCode">
+                            <span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
                         </div>
-                        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                    </form> 
                 </div>
                 <div class="col-6 p-3">
                     <div class="text-primary mb-2 font-weight-bold">Order Summary:</div>
                     <div class=""></div>
                     <div class="p-3 px-3 rounded border border-secondary">
                         <div class="d-flex align-items-end justify-content-between">
-                            <p class="m-0 text-secondary-emphasis"> (@Model.TotalCount) Product, Total: @Model.TotalPrice</p>
-                            <p class="m-0" >  </p>
                         </div>
-                        <p>Quantity: </p>
+                        <p>Quantity: @Model.TotalCount </p>
                         <div class="border-top d-flex align-items-end justify-content-between">
-                            <p class="m-0 text-secondary-emphasis">Total: </p>
+                            <p class="m-0 text-secondary-emphasis">Total: @Model.TotalPrice </p>
                         </div>
 
                     </div>
-                    <div></div>
                 </div>
             </div>
         </div>
         <div class="d-flex align-items-center justify-content-between p-2 px-3">
             <p class="m-0 text-danger"> Estimate Arrival Date:  </p>
-            <button type="submit" class="btn rounded  btn-primary">Order</button>
-
+                <button type="submit" class="orderSum btn rounded  btn-primary">Order</button>
         </div>
     </div>
+    </form>
 </div>
 
+
+@{
+    var cartJson = JsonConvert.SerializeObject(Model);
+    var orderSumJson = Json.Serialize(Model);
+}
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+@* 
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var model = @Html.Raw(cartJson);
+            var orderSum = @Html.Raw(orderSumJson);
+
+            $('.orderSum').click(function (e) {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("ViewCartToOrderSum", "Cart")",
+                    data: { shoppingCartJson: orderSum },
+                    success: function (result) {
+                        window.location.href = '@Url.Action("OrderSummary", "Cart")'
+                    console.log("succeeded");
+                },
+                error: function (reg, status, error) {
+                    alert(reg);
+                    alert(status);
+                    alert(error);
+
+                    console.log("error");
+                    console.log(status);
+                    console.log(error);
+                }
+            });
+        });
+        }); *@
+        </script>
+} 
+    

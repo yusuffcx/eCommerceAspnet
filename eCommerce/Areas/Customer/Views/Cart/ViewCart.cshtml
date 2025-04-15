@@ -82,10 +82,6 @@
                             }
 
                                 <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
-            @*                     <div class="d-flex justify-content-between px-x">
-                                    <p class="fw-bold">Discount:</p>
-                                    <p class="fw-bold">95$</p>
-                                </div> *@
                                 <div class="d-flex justify-content-between p-2 mb-2 bg-primary">
                                     <h5 class="fw-bold mb-0">Total:</h5>
                                     <h5 class="fw-bold mb-0">@Model.TotalPrice</h5>
@@ -100,33 +96,7 @@
                                     var orderSumJson = Json.Serialize(Model);
                                 }
 
-                                @using (Html.BeginForm("OrderSummary", "Cart",FormMethod.Post))
-                                {
-@*                                     <input type="hidden" name="ProductsJson" value="@Html.Raw(Json.Serialize(Model.Products))" />
- *@
-                                    //<h6> @Model.Products </h6>
-                                       // var serializedProducts = JsonSerializer.Serialize(Model.Products);
-@*                                     @for(int i = 0;i<Model.Products.Count;i++)
-                                    {
-
-                                        @Html.HiddenFor(m => m.Products[i].AppUserId)
-                                        @Html.HiddenFor(m => m.Products[i].AppUser)
-                                        @Html.HiddenFor(m => m.Products[i].Count)
-                                        @Html.HiddenFor(m => m.Products[i].Price)
-                                        @Html.HiddenFor(m => m.Products[i].Id)
-                                        @Html.HiddenFor(m => m.Products[i].ProductId)
-                                        @Html.HiddenFor(m => m.Products[i].Product)
-                                      
-                                    }
-                                    
-
-                                    @Html.HiddenFor(m => m.TotalCount)
-                                    @Html.HiddenFor(m => m.TotalPrice)
-                                    @Html.HiddenFor(m => m.OrderDetail)
-                                    @Html.HiddenFor(m => m.LoggedUserId)
-                                    <input type="submit" value="Order Summary" class="text-end btn btn-secondary btn-sm mx-2"/> *@
-                                }
-                                <input value="Order Summary"  class="orderSum text-end btn btn-secondary btn-sm mx-2" />
+                                <input value="Order Summary" class="orderSum text-end btn btn-secondary btn-sm mx-2" />
 
                             </div>
                             </div>
@@ -141,6 +111,7 @@
 @{
     var cartJson = JsonConvert.SerializeObject(Model);
 }
+
 
 
 @section Scripts{
