@@ -101,7 +101,19 @@ namespace eCommerce.Areas.Customer.Controllers
         {
             if (TempData["cart"] is string json)
             {
+                
                 var shoppingCartJson = JsonSerializer.Deserialize<ShoppingCartViewModel>(json);
+                var userId = shoppingCartJson.LoggedUserId;
+                OrderHeader OE = new OrderHeader();
+                var loggedUserInfo = _db.ApplicationUsers.FirstOrDefault(a => a.Id == userId);
+                shoppingCartJson.OrderHeader = OE;
+                shoppingCartJson.OrderHeader.Name = loggedUserInfo.Name;
+                shoppingCartJson.OrderHeader.StreetAddress = loggedUserInfo.StreetAddress;
+                shoppingCartJson.OrderHeader.PhoneNumber = loggedUserInfo.PhoneNumber;
+                shoppingCartJson.OrderHeader.PostalCode = loggedUserInfo.PostalCode;
+                shoppingCartJson.OrderHeader.City = loggedUserInfo.City;
+                shoppingCartJson.OrderHeader.State = loggedUserInfo.State;
+                
 
                 return View(shoppingCartJson);
             }
