@@ -128,10 +128,9 @@ namespace eCommerce.Areas.Customer.Controllers
         }
 
         [HttpPost]
-        public IActionResult OrderSummaryPOST()
+        public IActionResult OrderConfirm(ShoppingCartViewModel shoppingCartJson)
         {
-
-            return RedirectToAction("OrderSummary",VM);
+            return View();
         }
 
         public IActionResult Delete(int id)
